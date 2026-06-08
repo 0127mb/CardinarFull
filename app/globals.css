@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #18181b;
+}
+
+.product-card {
+  display: block;
+  min-width: 0;
+}
+
+.badge {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  border-radius: 999px;
+  background: #ffffff;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #18181b;
+}
+
+.banner-tile {
+  position: relative;
+  min-height: 180px;
+  overflow: hidden;
+  background: #111111;
+}
+
+.banner-tile span {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  z-index: 1;
+  max-width: 220px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.filter-title {
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #18181b;
+}
+
+.filter-link {
+  display: block;
+  color: #52525b;
+}
+
+.filter-link:hover {
+  color: #18181b;
+}
+
+.select-field {
+  width: 100%;
+  border: 1px solid #d4d4d8;
+  background: #ffffff;
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #18181b;
+}
+
+.field-dark {
+  width: 100%;
+  border-bottom: 1px solid #71717a;
+  background: transparent;
+  padding: 9px 0;
+  font-size: 14px;
+  color: #ffffff;
+  outline: none;
+}
+
+.field-dark::placeholder {
+  color: #a1a1aa;
+}
+
+.footer-title {
+  margin-bottom: 14px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  color: #71717a;
+}
+
+.footer-link {
+  color: #d4d4d8;
+}
+
+.footer-link:hover {
+  color: #ffffff;
+}
+
+.icon-link {
+  color: #3f3f46;
+}
+
+.contact-box {
+  border: 1px solid #e4e4e7;
+  padding: 24px;
+}
+
+.contact-box span {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #71717a;
+}
+
+.contact-box a,
+.contact-box p {
+  color: #18181b;
+  font-weight: 600;
+}
