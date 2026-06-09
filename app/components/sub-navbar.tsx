@@ -14,13 +14,13 @@ export default async function SubNavbar() {
   ];
 
   return (
-    <nav className="w-full bg-[#1f1f1f]">
-      <div className="mx-auto flex h-11 max-w-7xl items-center justify-center gap-10 px-5">
+    <nav className="w-full overflow-x-auto bg-[#1f1f1f] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="mx-auto flex h-12 min-w-max max-w-7xl items-center justify-start gap-2 px-4 sm:justify-center sm:gap-6 sm:px-5 lg:gap-10">
         {navItems.map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className="flex h-full items-center border-b-2 border-transparent text-xs font-semibold uppercase tracking-wide text-zinc-300 transition hover:border-white hover:text-white"
+            className="flex h-full min-w-max items-center border-b-2 border-transparent text-xs font-semibold uppercase tracking-wide text-zinc-300 px-2 transition hover:border-white hover:text-white"
           >
             {item.label}
           </Link>

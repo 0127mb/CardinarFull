@@ -151,8 +151,8 @@ export default function RegisterForm({ language }: RegisterFormProps) {
     ];
 
     return (
-        <div className="w-full max-w-xl mx-auto px-4 py-16">
-            <h2 className="text-2xl font-semibold text-center text-[#1C1C1E] mb-10 tracking-wide">
+        <div className="mx-auto w-full max-w-xl px-4 py-10 sm:px-5 sm:py-16">
+            <h2 className="text-2xl font-semibold text-center text-[#1C1C1E] mb-8 tracking-wide sm:mb-10">
                 {mode === 'register' ? t.title : t.login}
             </h2>
 
@@ -168,7 +168,7 @@ export default function RegisterForm({ language }: RegisterFormProps) {
                 </div>
             ) : null}
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
                 {fields.map((field) => (
                     <div key={field.name} className="relative group">
                         <input

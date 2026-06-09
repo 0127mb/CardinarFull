@@ -20,7 +20,7 @@ export default function ProductCard({ product, labels }: ProductCardProps) {
   const articulId = product.articuls?.[0]?.id;
 
   return (
-    <article className="product-card">
+    <article className="product-card flex h-full flex-col">
       <Link href={`/products/${product.id}`}>
         <div className="relative aspect-square bg-zinc-100">
           {image ? (
@@ -29,8 +29,8 @@ export default function ProductCard({ product, labels }: ProductCardProps) {
               alt={product.title}
               fill
               unoptimized
-              sizes="(max-width: 768px) 50vw, 220px"
-              className="object-contain p-4"
+              sizes="(max-width: 639px) 50vw, (max-width: 1023px) 33vw, 25vw"
+              className="object-contain p-2 sm:p-4"
             />
           ) : (
             <div className="flex h-full items-center justify-center text-xs text-zinc-400">
@@ -42,7 +42,7 @@ export default function ProductCard({ product, labels }: ProductCardProps) {
           ) : null}
         </div>
         <div className="mt-3">
-          <h3 className="line-clamp-2 min-h-9 text-sm font-medium text-zinc-900">
+          <h3 className="line-clamp-2 min-h-9 text-sm font-medium leading-5 text-zinc-900">
             {product.title}
           </h3>
           <p className="mt-1 text-sm font-semibold text-zinc-900">

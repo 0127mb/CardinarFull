@@ -24,7 +24,7 @@ export default async function SiteHeader() {
 
   return (
     <header className="w-full border-b border-zinc-100 bg-white">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-5">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-3 gap-y-3 px-4 py-3 sm:px-5 md:h-16 md:flex-nowrap md:gap-6 md:py-0">
         <Link href="/" className="flex shrink-0 items-center">
           <Image
             src="/header/lc.png"
@@ -32,21 +32,25 @@ export default async function SiteHeader() {
             width={132}
             height={26}
             priority
+            className="h-auto w-28 sm:w-[132px]"
           />
         </Link>
 
-        <form action="/catalog" className="hidden flex-1 items-center md:flex">
+        <form
+          action="/catalog"
+          className="order-3 flex w-full items-center md:order-none md:w-auto md:flex-1"
+        >
           <input
             name="q"
             placeholder={t.search}
-            className="h-10 flex-1 rounded-l-md bg-zinc-100 px-4 text-sm text-zinc-900 outline-none"
+            className="h-11 min-w-0 flex-1 rounded-l-md bg-zinc-100 px-3 text-base text-zinc-900 outline-none placeholder:text-zinc-500 focus:ring-2 focus:ring-inset focus:ring-zinc-400 sm:px-4 sm:text-sm"
           />
-          <button className="h-10 rounded-r-md bg-[#1f1f1f] px-5 text-sm font-semibold text-white">
+          <button className="h-11 shrink-0 rounded-r-md bg-[#1f1f1f] px-4 text-sm font-semibold text-white sm:px-5">
             {t.searchButton}
           </button>
         </form>
 
-        <div className="flex items-center gap-5 text-sm">
+        <div className="flex min-w-0 items-center gap-2 text-sm sm:gap-4 lg:gap-5">
           {staticInfo?.phoneNumber ? (
             <a
               href={`tel:${staticInfo.phoneNumber.replace(/\s+/g, "")}`}
@@ -55,14 +59,18 @@ export default async function SiteHeader() {
               {staticInfo.phoneNumber}
             </a>
           ) : null}
-          <Link href="/checkout" aria-label={t.cart} className="icon-link">
+          <Link
+            href="/checkout"
+            aria-label={t.cart}
+            className="icon-link flex min-h-11 items-center px-1 font-semibold"
+          >
             <span>{t.cart}</span>
           </Link>
           {currentUser ? (
             <Link
               href="/profile"
               aria-label={t.profile}
-              className="flex min-w-0 items-center gap-2 text-zinc-900"
+              className="flex min-h-11 min-w-0 items-center gap-2 text-zinc-900"
             >
               <Image
                 src={profileImage}
@@ -77,11 +85,11 @@ export default async function SiteHeader() {
               </span>
             </Link>
           ) : (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <Link
                 href="/features/authentication"
                 aria-label={t.profile}
-                className="text-[#d71920]"
+                className="flex min-h-11 items-center font-semibold text-[#d71920]"
               >
                 {t.login}
               </Link>

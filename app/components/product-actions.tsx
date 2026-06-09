@@ -51,14 +51,20 @@ export default function ProductActions({
   }
 
   return (
-    <div className={`flex flex-wrap gap-2 ${compact ? "mt-3" : "mt-6"}`}>
+    <div
+      className={`flex gap-2 ${
+        compact
+          ? "mt-auto flex-col pt-3 sm:flex-row sm:flex-wrap"
+          : "mt-6 flex-col sm:flex-row sm:flex-wrap"
+      }`}
+    >
       <button
         type="button"
         onClick={addToCart}
         className={
           compact
-            ? "text-xs font-semibold text-[#1773d1]"
-            : "bg-[#1f1f1f] px-6 py-3 text-sm font-semibold text-white"
+            ? "min-h-11 text-left text-xs font-semibold text-[#1773d1] sm:min-h-0"
+            : "min-h-11 bg-[#1f1f1f] px-6 py-3 text-sm font-semibold text-white"
         }
       >
         {added ? labels.added : labels.addToCart}
@@ -67,7 +73,7 @@ export default function ProductActions({
         <button
           type="button"
           onClick={buyNow}
-          className="border border-zinc-300 px-6 py-3 text-sm font-semibold text-zinc-900"
+          className="min-h-11 border border-zinc-300 px-6 py-3 text-sm font-semibold text-zinc-900"
         >
           {labels.buy}
         </button>
@@ -76,8 +82,8 @@ export default function ProductActions({
         href={`/constructor?productId=${productId}`}
         className={
           compact
-            ? "text-xs font-semibold text-zinc-600"
-            : "border border-zinc-300 px-6 py-3 text-sm font-semibold text-zinc-900"
+            ? "flex min-h-11 items-center text-xs font-semibold text-zinc-600 sm:min-h-0"
+            : "flex min-h-11 items-center justify-center border border-zinc-300 px-6 py-3 text-sm font-semibold text-zinc-900"
         }
       >
         {labels.customizer}

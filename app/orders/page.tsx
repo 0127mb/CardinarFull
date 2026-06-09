@@ -6,12 +6,12 @@ export default async function OrdersPage() {
   const t = uiText[lang];
 
   return (
-    <main className="mx-auto max-w-7xl px-5 py-10">
-      <div className="mb-8 text-sm text-zinc-500">
+    <main className="mx-auto max-w-7xl px-4 py-8 sm:px-5 sm:py-10">
+      <div className="mb-6 text-sm text-zinc-500 sm:mb-8">
         {t.home} / {t.orders}
       </div>
       <h1 className="mb-8 text-2xl font-semibold text-zinc-900">{t.orders}</h1>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto overscroll-x-contain">
         <table className="w-full min-w-[720px] border-collapse text-left text-sm">
           <thead className="border-b border-zinc-200 text-zinc-500">
             <tr>

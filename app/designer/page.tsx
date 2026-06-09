@@ -62,12 +62,12 @@ export default async function ConstructorPage({
   const model = translatedModels[0];
 
   return (
-    <main className="mx-auto max-w-7xl px-5 py-10">
-      <div className="mb-8 text-sm text-zinc-500">
+    <main className="mx-auto max-w-7xl px-4 py-8 sm:px-5 sm:py-10">
+      <div className="mb-6 text-sm text-zinc-500 sm:mb-8">
         {t.home} / {t.constructor}
       </div>
       {selectedProduct ? (
-        <div className="mb-8 border border-zinc-200 bg-zinc-50 px-5 py-4">
+        <div className="mb-6 border border-zinc-200 sm:mb-8 bg-zinc-50 px-5 py-4">
           <p className="text-xs font-bold uppercase text-zinc-400">
             {t.customizer}
           </p>

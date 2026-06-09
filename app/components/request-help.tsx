@@ -7,7 +7,7 @@ export default async function RequestHelp() {
   const t = uiText[lang];
 
   return (
-    <section className="mx-auto my-16 grid max-w-6xl grid-cols-1 gap-8 bg-[#1f1f1f] px-8 py-8 text-white md:grid-cols-[1fr_420px]">
+    <section className="mx-4 my-12 grid max-w-6xl grid-cols-1 gap-8 bg-[#1f1f1f] px-5 py-7 text-white sm:mx-5 sm:px-8 sm:py-8 md:grid-cols-[1fr_minmax(320px,420px)] lg:mx-auto lg:my-16">
       <div>
         <p className="text-xl font-bold uppercase">
           {translation?.requestTitle ?? t.requestTitle}

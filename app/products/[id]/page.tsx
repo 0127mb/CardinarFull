@@ -42,27 +42,27 @@ export default async function ProductPage({ params }: ProductPageProps) {
     .map((item) => translatedProduct(item, translations));
 
   return (
-    <main className="mx-auto max-w-7xl px-5 py-10">
-      <div className="mb-8 text-sm text-zinc-500">
+    <main className="mx-auto max-w-7xl px-4 py-8 sm:px-5 sm:py-10">
+      <div className="mb-6 truncate text-sm text-zinc-500 sm:mb-8">
         {t.home} / {current.title}
       </div>
-      <section className="grid grid-cols-1 gap-10 md:grid-cols-[90px_1fr_420px]">
-        <div className="flex gap-3 md:flex-col">
+      <section className="grid grid-cols-1 gap-6 lg:grid-cols-[80px_minmax(0,1fr)_minmax(300px,380px)] lg:gap-8 xl:grid-cols-[90px_minmax(0,1fr)_420px] xl:gap-10">
+        <div className="order-2 flex gap-3 overflow-x-auto pb-1 lg:order-none lg:flex-col lg:overflow-visible">
           {images.slice(0, 4).map((image) => (
-            <div key={image.id} className="relative h-20 w-20 bg-zinc-100">
+            <div key={image.id} className="relative h-16 w-16 shrink-0 bg-zinc-100 sm:h-20 sm:w-20">
               <Image
                 src={assetUrl(image.image)}
                 alt=""
                 fill
                 unoptimized
-                sizes="80px"
+                sizes="(max-width: 639px) 64px, 80px"
                 className="object-contain p-2"
               />
             </div>
           ))}
         </div>
 
-        <div className="relative aspect-square bg-zinc-100">
+        <div className="order-1 relative aspect-square min-w-0 bg-zinc-100 lg:order-none">
           {images[0]?.image ? (
             <Image
               src={assetUrl(images[0].image)}
@@ -70,14 +70,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
               fill
               priority
               unoptimized
-              sizes="(max-width: 768px) 100vw, 640px"
-              className="object-contain p-8"
+              sizes="(max-width: 1023px) calc(100vw - 32px), 50vw"
+              className="object-contain p-4 sm:p-8"
             />
           ) : null}
         </div>
 
-        <div>
-          <h1 className="text-2xl font-semibold text-zinc-900">{current.title}</h1>
+        <div className="order-3 min-w-0 lg:order-none">
+          <h1 className="break-words text-xl font-semibold text-zinc-900 sm:text-2xl">{current.title}</h1>
           <p className="mt-5 text-2xl font-semibold text-zinc-900">
             {Number(current.price).toLocaleString("ru-RU")} сум
           </p>
@@ -106,7 +106,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-12 sm:py-16">
         <h2 className="section-title mb-8">{t.relatedProducts}</h2>
         <ProductGrid
           products={related}

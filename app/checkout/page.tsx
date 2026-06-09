@@ -70,11 +70,11 @@ export default async function CheckoutPage() {
   ]);
 
   return (
-    <main className="mx-auto max-w-7xl px-5 py-10">
-      <div className="mb-8 text-sm text-zinc-500">
+    <main className="mx-auto max-w-7xl px-4 py-8 sm:px-5 sm:py-10">
+      <div className="mb-6 text-sm text-zinc-500 sm:mb-8">
         {t.home} / {labels.title}
       </div>
-      <h1 className="mb-12 text-3xl font-semibold">{labels.title}</h1>
+      <h1 className="mb-8 text-2xl font-semibold sm:mb-12 sm:text-3xl">{labels.title}</h1>
       <CheckoutForm
         branches={branches ?? []}
         user={user}

@@ -61,8 +61,8 @@ export default async function ProfilePage() {
 
   return (
     <main className="flex-1 bg-white">
-      <section className="mx-auto grid max-w-5xl gap-10 px-5 py-12 md:grid-cols-[280px_1fr] md:py-16">
-        <aside className="flex flex-col items-center border border-zinc-200 p-8">
+      <section className="mx-auto grid max-w-5xl gap-8 px-4 py-8 sm:px-5 sm:py-12 md:grid-cols-[240px_minmax(0,1fr)] md:gap-10 md:py-16 lg:grid-cols-[280px_minmax(0,1fr)]">
+        <aside className="flex flex-col items-center border border-zinc-200 p-5 sm:p-8">
           <ProfileImageUploader
             fullName={currentUser.fullName}
             initialImage={profileImage}
@@ -82,11 +82,11 @@ export default async function ProfilePage() {
           <p className="text-xs font-bold uppercase tracking-wide text-[#d71920]">
             {t.subtitle}
           </p>
-          <h2 className="mt-2 text-3xl font-bold text-zinc-950">{t.title}</h2>
+          <h2 className="mt-2 text-2xl font-bold text-zinc-950 sm:text-3xl">{t.title}</h2>
 
-          <dl className="mt-8 grid gap-4 sm:grid-cols-2">
+          <dl className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4">
             {details.map((item) => (
-              <div key={item.label} className="border border-zinc-200 p-5">
+              <div key={item.label} className="border border-zinc-200 p-4 sm:p-5">
                 <dt className="text-xs font-bold uppercase text-zinc-400">
                   {item.label}
                 </dt>

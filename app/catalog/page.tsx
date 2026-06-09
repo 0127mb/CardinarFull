@@ -67,11 +67,11 @@ export default async function Catalog({ searchParams }: CatalogProps) {
     });
 
   return (
-    <main className="mx-auto max-w-7xl px-5 py-10">
-      <div className="mb-8 text-sm text-zinc-500">
+    <main className="mx-auto max-w-7xl px-4 py-8 sm:px-5 sm:py-10">
+      <div className="mb-6 text-sm text-zinc-500 sm:mb-8">
         {t.home} / {t.catalog}
       </div>
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-[240px_1fr]">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-8">
         <CatalogFilters
           categories={translatedCategories}
           colors={translatedColors}

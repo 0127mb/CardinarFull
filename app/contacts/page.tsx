@@ -7,12 +7,12 @@ export default async function ContactsPage() {
   const t = uiText[lang];
 
   return (
-    <main className="mx-auto max-w-7xl px-5 py-10">
-      <div className="mb-8 text-sm text-zinc-500">
+    <main className="mx-auto max-w-7xl px-4 py-8 sm:px-5 sm:py-10">
+      <div className="mb-6 text-sm text-zinc-500 sm:mb-8">
         {t.home} / {t.contacts}
       </div>
       <h1 className="mb-8 text-2xl font-semibold text-zinc-900">{t.contacts}</h1>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
         <div className="contact-box">
           <span>{t.phone}</span>
           <a href={`tel:${staticInfo?.phoneNumber ?? ""}`}>

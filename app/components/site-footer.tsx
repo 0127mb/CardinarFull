@@ -18,11 +18,11 @@ export default async function SiteFooter() {
   ];
 
   return (
-    <footer className="mt-auto w-full bg-[#111] px-5 py-12 text-zinc-400">
+    <footer className="mt-auto w-full bg-[#111] px-4 py-10 text-zinc-400 sm:px-5 sm:py-12">
       <div className="mx-auto max-w-7xl">
         <Image src="/header/lc.png" alt="CARDINAR" width={132} height={26} />
 
-        <div className="mt-10 grid grid-cols-1 gap-8 border-b border-zinc-800 pb-10 text-xs md:grid-cols-5">
+        <div className="mt-8 grid grid-cols-1 gap-8 border-b border-zinc-800 pb-10 text-sm sm:grid-cols-2 sm:text-xs lg:grid-cols-5">
           <div>
             <h4 className="footer-title">
               {translation?.footerInformationTitle ?? t.information}
@@ -67,14 +67,14 @@ export default async function SiteFooter() {
             </p>
           </div>
 
-          <div className="flex gap-3 md:justify-end">
+          <div className="flex gap-3 sm:col-span-2 lg:col-span-1 lg:justify-end">
             {(socialLinks ?? []).map((social) => (
               <a
                 key={social.id}
                 href={social.link}
                 target="_blank"
                 rel="noreferrer"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-zinc-700"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-zinc-700"
                 aria-label={social.title}
               >
                 {social.icon ? (

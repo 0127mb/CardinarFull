@@ -8,6 +8,9 @@ import { getCurrentLanguage } from "./lib/api";
 export const metadata: Metadata = {
   title: "CARDINAR",
   description: "Авточехлы и автомобильные аксессуары CARDINAR",
+  other: {
+    google: "notranslate",
+  },
 };
 
 export default async function RootLayout({
@@ -18,16 +21,17 @@ export default async function RootLayout({
   const lang = await getCurrentLanguage();
 
   return (
-    <html lang={lang} className="h-full antialiased">
-
+    <html
+      lang={lang}
+      translate="no"
+      className="notranslate h-full antialiased"
+    >
       <body className="min-h-full flex flex-col">
-
         <SiteHeader />
         <SubNavbar />
         {children}
-         <SiteFooter />
-        </body>
-     
+        <SiteFooter />
+      </body>
     </html>
   );
 }

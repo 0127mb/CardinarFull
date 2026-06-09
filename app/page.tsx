@@ -33,9 +33,9 @@ export default async function Home() {
 
   return (
     <main>
-      <section className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 px-5 py-14 md:grid-cols-[1fr_460px]">
+      <section className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-6 px-4 py-10 sm:px-5 sm:py-14 md:grid-cols-[minmax(0,1fr)_minmax(320px,460px)] md:gap-8">
         <div>
-          <h1 className="text-6xl font-black tracking-normal text-[#d71920] md:text-7xl">
+          <h1 className="text-4xl font-black tracking-normal text-[#d71920] sm:text-6xl md:text-7xl">
             CARDINAR
           </h1>
           <p className="mt-5 max-w-md text-sm font-semibold uppercase text-zinc-900">
@@ -50,7 +50,7 @@ export default async function Home() {
             {t.more}
           </Link>
         </div>
-        <div className="relative aspect-[5/4]">
+        <div className="relative aspect-[5/4] w-full">
           {heroBanner?.image ? (
             <Image
               src={assetUrl(heroBanner.image)}
@@ -58,7 +58,7 @@ export default async function Home() {
               fill
               priority
               unoptimized
-              sizes="(max-width: 768px) 100vw, 460px"
+              sizes="(max-width: 767px) calc(100vw - 32px), 460px"
               className="object-contain"
             />
           ) : (
@@ -68,7 +68,7 @@ export default async function Home() {
       </section>
 
       {activeBanners.length > 1 ? (
-        <section className="mx-auto grid max-w-7xl grid-cols-1 gap-5 px-5 md:grid-cols-3">
+        <section className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 sm:px-5 md:grid-cols-3 md:gap-5">
           {activeBanners.slice(1, 4).map((banner, index) => (
             <Link
               key={banner.id}
@@ -81,7 +81,7 @@ export default async function Home() {
                   alt={banner.title}
                   fill
                   unoptimized
-                  sizes={index === 0 ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
+                  sizes={index === 0 ? "(max-width: 767px) calc(100vw - 32px), 66vw" : "(max-width: 767px) calc(100vw - 32px), 33vw"}
                    className="object-cover"
                 />
               ) : null}
@@ -91,8 +91,8 @@ export default async function Home() {
         </section>
       ) : null}
 
-      <section className="mx-auto max-w-7xl px-5 py-16">
-        <div className="mb-8 flex items-center justify-between">
+      <section className="mx-auto max-w-7xl px-4 py-12 sm:px-5 sm:py-16">
+        <div className="mb-7 flex items-end justify-between gap-4">
           <h2 className="section-title">{t.popularProducts}</h2>
           <Link className="text-sm font-semibold text-[#1773d1]" href="/catalog">
             {t.allProducts}

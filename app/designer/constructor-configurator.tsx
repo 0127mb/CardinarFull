@@ -61,8 +61,8 @@ export default function ConstructorConfigurator({
   }
 
   return (
-    <div className="grid grid-cols-1 gap-10 md:grid-cols-[240px_1fr_280px]">
-      <aside className="space-y-8 text-sm">
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[220px_minmax(0,1fr)_240px] xl:grid-cols-[240px_minmax(0,1fr)_280px] xl:gap-10">
+      <aside className="grid grid-cols-1 gap-5 text-sm sm:grid-cols-3 lg:block lg:space-y-8">
         <div>
           <h2 className="filter-title">{labels.make}</h2>
           <select className="select-field">
@@ -85,7 +85,7 @@ export default function ConstructorConfigurator({
             {colors.map((color) => (
               <span
                 key={color.id}
-                className="h-5 w-5 rounded-full border border-zinc-300"
+                className="h-8 w-8 rounded-full border sm:h-6 sm:w-6 border-zinc-300"
                 style={{ backgroundColor: color.color }}
                 title={color.title}
               />
@@ -103,8 +103,8 @@ export default function ConstructorConfigurator({
               alt={selectedAlt}
               fill
               unoptimized
-              sizes="(max-width: 768px) 100vw, 512px"
-              className="object-contain p-8"
+              sizes="(max-width: 1023px) calc(100vw - 32px), 512px"
+              className="object-contain p-4 sm:p-8"
             />
           ) : (
             <div className="flex h-full items-center justify-center px-8 text-center text-sm font-semibold text-zinc-400">
@@ -115,12 +115,12 @@ export default function ConstructorConfigurator({
         <p className="mx-auto mt-6 max-w-xl text-sm leading-6 text-zinc-600">
           {labels.constructorDescription}
         </p>
-        <button className="mt-6 bg-[#1f1f1f] px-8 py-3 text-sm font-semibold text-white">
+        <button className="mt-6 min-h-11 w-full bg-[#1f1f1f] px-8 py-3 text-sm sm:w-auto font-semibold text-white">
           {labels.submit}
         </button>
       </section>
 
-      <aside className="space-y-6">
+      <aside className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:block lg:space-y-6">
         {(["central", "rare", "side", "stitch"] as const).map((partName) => (
           <div key={partName}>
             <h2 className="filter-title">{partLabels[partName]}</h2>
@@ -136,7 +136,7 @@ export default function ConstructorConfigurator({
                       key={part.id}
                       type="button"
                       onClick={() => selectPart(part)}
-                      className={`relative h-16 w-16 overflow-hidden border bg-zinc-50 transition ${
+                      className={`relative h-16 w-16 shrink-0 overflow-hidden border bg-zinc-50 transition ${
                         selected
                           ? "border-[#d71920] ring-2 ring-[#d71920]/20"
                           : "border-zinc-200 hover:border-zinc-500"

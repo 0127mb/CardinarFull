@@ -24,23 +24,23 @@ export default async function BranchesPage() {
   );
 
   return (
-    <main className="mx-auto max-w-7xl px-5 py-10">
-      <div className="mb-8 text-sm text-zinc-500">
+    <main className="mx-auto max-w-7xl px-4 py-8 sm:px-5 sm:py-10">
+      <div className="mb-6 text-sm text-zinc-500 sm:mb-8">
         {t.home} / {t.branches}
       </div>
       <h1 className="mb-8 text-2xl font-semibold text-zinc-900">
         {t.branchesTitle}
       </h1>
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
         {translatedBranches.map((branch) => (
           <a
             key={branch.id}
             href={yandexMapUrl(branch)}
             target="_blank"
             rel="noreferrer"
-            className="block border border-zinc-200 p-6 transition hover:border-zinc-900"
+            className="block border border-zinc-200 p-4 sm:p-6 transition hover:border-zinc-900"
           >
-            <div className="flex items-start justify-between gap-4">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
               <div>
                 <h2 className="text-lg font-semibold text-zinc-900">
                   {branch.title}

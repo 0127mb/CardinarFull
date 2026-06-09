@@ -117,26 +117,26 @@ export default function CheckoutForm({
         {items.map((item, index) => (
           <article
             key={`${item.productId}-${item.articulId ?? "none"}`}
-            className="grid grid-cols-[96px_1fr_auto] gap-5 border-b border-zinc-200 pb-5"
+            className="grid grid-cols-[72px_minmax(0,1fr)_44px] gap-3 border-b border-zinc-200 pb-5 sm:grid-cols-[96px_minmax(0,1fr)_44px] sm:gap-5"
           >
-            <div className="relative h-24 w-24 bg-zinc-100">
+            <div className="relative h-18 w-18 bg-zinc-100 sm:h-24 sm:w-24">
               {item.image ? (
                 <Image
                   src={assetUrl(item.image)}
                   alt={item.title}
                   fill
                   unoptimized
-                  sizes="96px"
+                  sizes="(max-width: 639px) 72px, 96px"
                   className="object-contain p-2"
                 />
               ) : null}
             </div>
             <div>
-              <h2 className="text-lg font-medium">{item.title}</h2>
-              <div className="mt-4 inline-flex items-center bg-zinc-100">
+              <h2 className="break-words text-base font-medium sm:text-lg">{item.title}</h2>
+              <div className="mt-3 inline-flex items-center sm:mt-4 bg-zinc-100">
                 <button
                   type="button"
-                  className="h-10 w-10"
+                  className="h-11 w-11"
                   onClick={() =>
                     changeQuantity(index, Math.max(1, item.quantity - 1))
                   }
@@ -146,7 +146,7 @@ export default function CheckoutForm({
                 <span className="w-8 text-center text-sm">{item.quantity}</span>
                 <button
                   type="button"
-                  className="h-10 w-10"
+                  className="h-11 w-11"
                   onClick={() => changeQuantity(index, item.quantity + 1)}
                 >
                   +
@@ -159,7 +159,7 @@ export default function CheckoutForm({
             <button
               type="button"
               aria-label={labels.remove}
-              className="h-8 w-8 text-xl"
+              className="flex h-11 w-11 items-center justify-center text-xl"
               onClick={() => remove(index)}
             >
               ×
@@ -168,7 +168,7 @@ export default function CheckoutForm({
         ))}
       </section>
 
-      <div className="mt-12 grid gap-10 lg:grid-cols-3">
+      <div className="mt-10 grid gap-8 md:grid-cols-2 lg:mt-12 lg:grid-cols-3 lg:gap-10">
         <section>
           <h2 className="mb-5 text-base font-semibold">① {labels.customer}</h2>
           <div className="space-y-4">
@@ -212,7 +212,7 @@ export default function CheckoutForm({
             <h2 className="mb-5 text-base font-semibold">
               ③ {labels.receiveMethod}
             </h2>
-            <label className="mb-3 flex gap-2 text-sm">
+            <label className="mb-2 flex min-h-11 items-center gap-3 text-sm">
               <input
                 type="radio"
                 checked={!delivery}
@@ -220,7 +220,7 @@ export default function CheckoutForm({
               />
               {labels.pickup}
             </label>
-            <label className="flex gap-2 text-sm">
+            <label className="flex min-h-11 items-center gap-3 text-sm">
               <input
                 type="radio"
                 checked={delivery}
@@ -239,7 +239,7 @@ export default function CheckoutForm({
             ["click", "Click"],
             ["uzum", "Uzum bank"],
           ].map(([value, text], index) => (
-            <label key={value} className="mb-4 flex gap-2 text-sm">
+            <label key={value} className="mb-2 flex min-h-11 items-center gap-3 text-sm">
               <input
                 type="radio"
                 name="paymentMethod"
@@ -252,12 +252,12 @@ export default function CheckoutForm({
         </section>
       </div>
 
-      <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-zinc-200 pt-6">
+      <div className="mt-10 flex flex-col items-stretch justify-between gap-4 border-t sm:flex-row sm:items-center border-zinc-200 pt-6">
         <p className="text-xl font-bold">
           {labels.total}: {total.toLocaleString("ru-RU")} сум
         </p>
         <button
-          className="bg-[#1f1f1f] px-8 py-3 text-sm font-semibold text-white disabled:opacity-50"
+          className="min-h-11 w-full bg-[#1f1f1f] px-8 py-3 text-sm sm:w-auto font-semibold text-white disabled:opacity-50"
           disabled={submitting}
         >
           {submitting ? labels.processing : labels.placeOrder}

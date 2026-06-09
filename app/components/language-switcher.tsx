@@ -29,7 +29,7 @@ export default function LanguageSwitcher({ language }: { language: Language }) {
     <div className="relative">
       <button
         type="button"
-        className="rounded-full border border-zinc-200 px-3 py-1 text-xs font-semibold uppercase text-zinc-700"
+        className="flex min-h-11 min-w-11 items-center justify-center rounded-full border border-zinc-200 px-2 py-1 text-xs font-semibold uppercase text-zinc-700"
         onClick={() => setIsOpen((value) => !value)}
       >
         {selectedLanguage}

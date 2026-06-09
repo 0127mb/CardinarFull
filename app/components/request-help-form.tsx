@@ -83,7 +83,7 @@ export default function RequestHelpForm({ labels }: RequestHelpFormProps) {
       />
       <button
         disabled={sending}
-        className="w-full bg-white px-4 py-2 text-sm font-semibold text-black disabled:opacity-60"
+        className="min-h-11 w-full bg-white px-4 py-2 text-sm font-semibold text-black disabled:opacity-60"
       >
         {sending ? labels.sending : labels.submit}
       </button>
