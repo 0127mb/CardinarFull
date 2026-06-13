@@ -18,7 +18,6 @@ export type StaticInfo = {
 export type CurrentUser = {
   id: number;
   fullName: string;
-  email: string;
   phoneNumber: string;
   profileImage?: string | null;
   isAdmin: boolean;

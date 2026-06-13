@@ -190,7 +190,6 @@ export default function CheckoutForm({
               className="select-field"
               name="email"
               type="email"
-              defaultValue={user?.email}
               placeholder={labels.email}
             />
           </div>

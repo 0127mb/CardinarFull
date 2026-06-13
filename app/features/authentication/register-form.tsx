@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Language } from '../../lib/language';
 
 type FormData = {
     fullName: string;
     phoneNumber: string;
-    email: string;
     password: string;
     confirmPassword: string;
 };
@@ -24,13 +24,12 @@ const authText = {
         title: 'Регистрация',
         fullName: 'Имя',
         phoneNumber: 'Телефон',
-        email: 'E-mail',
         password: 'Пароль',
         confirmPassword: 'Подтверждение пароля',
         passwordMismatch: 'Пароли не совпадают!',
-        success: 'Аккаунт зарегистрирован. Теперь подтвердите его по email.',
+        success: 'Аккаунт успешно зарегистрирован.',
         error: 'Ошибка регистрации',
-        loginSuccess: 'Ссылка для входа отправлена на ваш email.',
+        loginSuccess: 'Вход выполнен.',
         loginError: 'Ошибка авторизации',
         agreementPrefix: 'Я прочитал',
         agreementLink: '«Условия пользовательского соглашения»',
@@ -43,13 +42,12 @@ const authText = {
         title: 'Royxatdan otish',
         fullName: 'Ism',
         phoneNumber: 'Telefon',
-        email: 'E-mail',
         password: 'Parol',
         confirmPassword: 'Parolni tasdiqlash',
         passwordMismatch: 'Parollar mos kelmadi!',
-        success: 'Akkaunt royxatdan otdi. Endi email orqali tasdiqlang.',
+        success: 'Akkaunt muvaffaqiyatli yaratildi.',
         error: 'Royxatdan otishda xatolik',
-        loginSuccess: 'Kirish havolasi emailingizga yuborildi.',
+        loginSuccess: 'Akkauntga kirildi.',
         loginError: 'Kirishda xatolik',
         agreementPrefix: 'Men',
         agreementLink: '"Foydalanuvchi kelishuvi shartlari"',
@@ -65,12 +63,12 @@ type RegisterFormProps = {
 };
 
 export default function RegisterForm({ language }: RegisterFormProps) {
+    const router = useRouter();
     const t = authText[language];
     const [mode, setMode] = useState<AuthMode>('register');
     const [formData, setFormData] = useState<FormData>({
         fullName: '',
         phoneNumber: '',
-        email: '',
         password: '',
         confirmPassword: '',
     });
@@ -98,14 +96,10 @@ export default function RegisterForm({ language }: RegisterFormProps) {
                 ? {
                     fullName: formData.fullName.trim(),
                     phoneNumber: formData.phoneNumber.trim(),
-                    email: formData.email.trim(),
                     password: formData.password,
-                    isAdmin: false,
-                    isActive: false,
                 }
                 : {
                     phoneNumber: formData.phoneNumber.trim(),
-                    email: formData.email.trim(),
                     password: formData.password,
                 };
             const response = await fetch(`/api/auth/${endpoint}`, {
@@ -129,10 +123,11 @@ export default function RegisterForm({ language }: RegisterFormProps) {
                 setFormData({
                     fullName: '',
                     phoneNumber: '',
-                    email: '',
                     password: '',
                     confirmPassword: '',
                 });
+                router.replace('/profile');
+                router.refresh();
             }
         } catch (error: unknown) {
             setMessage({
@@ -153,7 +148,6 @@ export default function RegisterForm({ language }: RegisterFormProps) {
             ? [{ label: t.fullName, name: 'fullName' as const, type: 'text' }]
             : []),
         { label: t.phoneNumber, name: 'phoneNumber', type: 'tel' },
-        { label: t.email, name: 'email', type: 'email' },
         { label: t.password, name: 'password', type: 'password' },
         ...(mode === 'register'
             ? [{ label: t.confirmPassword, name: 'confirmPassword' as const, type: 'password' }]

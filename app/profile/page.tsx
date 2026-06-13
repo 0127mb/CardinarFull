@@ -16,7 +16,6 @@ const profileText = {
     inactive: "Не активен",
     fullName: "Имя",
     phoneNumber: "Телефон",
-    email: "E-mail",
     upload: "Загрузить фото профиля",
     uploading: "Загрузка...",
   },
@@ -31,7 +30,6 @@ const profileText = {
     inactive: "Faol emas",
     fullName: "Ism",
     phoneNumber: "Telefon",
-    email: "E-mail",
     upload: "Profil rasmini yuklash",
     uploading: "Yuklanmoqda...",
   },
@@ -54,7 +52,6 @@ export default async function ProfilePage() {
   const details = [
     { label: t.fullName, value: currentUser.fullName },
     { label: t.phoneNumber, value: currentUser.phoneNumber },
-    { label: t.email, value: currentUser.email },
     { label: t.role, value: currentUser.isAdmin ? t.admin : t.user },
     { label: t.status, value: currentUser.isActive ? t.active : t.inactive },
   ];

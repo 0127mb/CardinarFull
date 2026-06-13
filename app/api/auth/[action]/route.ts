@@ -6,6 +6,11 @@ type RouteContext = {
   params: Promise<{ action: string }>;
 };
 
+type AuthResponse = {
+  accessToken?: string;
+  message?: string | string[];
+};
+
 function errorMessage(data: unknown, fallback: string) {
   if (
     data &&
@@ -73,7 +78,9 @@ export async function POST(request: NextRequest, context: RouteContext) {
         body: JSON.stringify(body),
       },
     );
-    const data = (await backendResponse.json().catch(() => null)) as unknown;
+    const data = (await backendResponse.json().catch(() => null)) as
+      | AuthResponse
+      | null;
 
     if (!backendResponse.ok) {
       return NextResponse.json(
@@ -89,7 +96,23 @@ export async function POST(request: NextRequest, context: RouteContext) {
       );
     }
 
-    return NextResponse.json(data, { status: backendResponse.status });
+    if (!data?.accessToken) {
+      return NextResponse.json(
+        { message: "Authentication token was not returned" },
+        { status: 502 },
+      );
+    }
+
+    const response = NextResponse.json(data, {
+      status: backendResponse.status,
+    });
+    response.cookies.set("access_token", data.accessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+    });
+    return response;
   } catch {
     return NextResponse.json(
       { message: "Authentication service is unavailable" },

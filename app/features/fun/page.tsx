@@ -235,7 +235,7 @@ export default function VerifyEmailPage() {
             }}
           />
           <p style={{ margin: 0, fontSize: '14px', color: '#bbb', lineHeight: 1.7, textAlign: 'center' }}>
-            Sir, I am waiting for your email verification
+            Sir, I am waiting for your login
             <span style={{ display: 'inline-flex', gap: '4px', alignItems: 'center', marginLeft: '6px', verticalAlign: 'middle' }}>
               <span className="dot1" style={{ width: 6, height: 6, borderRadius: '50%', background: '#185FA5', display: 'inline-block' }} />
               <span className="dot2" style={{ width: 6, height: 6, borderRadius: '50%', background: '#185FA5', display: 'inline-block' }} />
