@@ -8,6 +8,7 @@ import {
   uiText,
 } from "../lib/api";
 import LanguageSwitcher from "./language-switcher";
+import LogoutButton from "./logout-button";
 
 const DEFAULT_PROFILE_IMAGE = "https://github.com/identicons/cardinar-user.png";
 
@@ -67,23 +68,29 @@ export default async function SiteHeader() {
             <span>{t.cart}</span>
           </Link>
           {currentUser ? (
-            <Link
-              href="/profile"
-              aria-label={t.profile}
-              className="flex min-h-11 min-w-0 items-center gap-2 text-zinc-900"
-            >
-              <Image
-                src={profileImage}
-                alt=""
-                width={32}
-                height={32}
-                unoptimized
-                className="h-8 w-8 rounded-full border border-zinc-200 object-cover"
+            <>
+              <Link
+                href="/profile"
+                aria-label={t.profile}
+                className="flex min-h-11 min-w-0 items-center gap-2 text-zinc-900"
+              >
+                <Image
+                  src={profileImage}
+                  alt=""
+                  width={32}
+                  height={32}
+                  unoptimized
+                  className="h-8 w-8 rounded-full border border-zinc-200 object-cover"
+                />
+                <span className="hidden max-w-32 truncate font-semibold sm:block">
+                  {currentUser.fullName}
+                </span>
+              </Link>
+              <LogoutButton
+                label={lang === "uz" ? "Chiqish" : "Выйти"}
+                loadingLabel={lang === "uz" ? "Chiqilmoqda..." : "Выход..."}
               />
-              <span className="hidden max-w-32 truncate font-semibold sm:block">
-                {currentUser.fullName}
-              </span>
-            </Link>
+            </>
           ) : (
             <div className="flex items-center gap-2 sm:gap-3">
               <Link

@@ -1,10 +1,7 @@
 'use client';
 
-import axios from 'axios';
 import React, { useState } from 'react';
 import { Language } from '../../lib/language';
-
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001';
 
 type FormData = {
     fullName: string;
@@ -111,7 +108,19 @@ export default function RegisterForm({ language }: RegisterFormProps) {
                     email: formData.email.trim(),
                     password: formData.password,
                 };
-            const response = await axios.post(`${API_BASE_URL}/api/auth/${endpoint}`, payload);
+            const response = await fetch(`/api/auth/${endpoint}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+            const data = await response.json().catch(() => null) as
+                | { message?: string }
+                | null;
+
+            if (!response.ok) {
+                throw new Error(data?.message ?? (mode === 'register' ? t.error : t.loginError));
+            }
+
             if (response.status === 200 || response.status === 201) {
                 setMessage({
                     type: 'success',
@@ -126,12 +135,13 @@ export default function RegisterForm({ language }: RegisterFormProps) {
                 });
             }
         } catch (error: unknown) {
-            const errorMessage = axios.isAxiosError<{ message?: string }>(error)
-                ? error.response?.data?.message
-                : undefined;
             setMessage({
                 type: 'error',
-                text: errorMessage ?? (mode === 'register' ? t.error : t.loginError),
+                text: error instanceof Error
+                    ? error.message
+                    : mode === 'register'
+                        ? t.error
+                        : t.loginError,
             });
         } finally {
             setLoading(false);
@@ -158,11 +168,10 @@ export default function RegisterForm({ language }: RegisterFormProps) {
 
             {message ? (
                 <div
-                    className={`p-3.5 mb-6 text-xs font-medium rounded-lg text-center ${
-                        message.type === 'success'
-                            ? 'bg-emerald-50 text-emerald-700'
-                            : 'bg-rose-50 text-rose-700'
-                    }`}
+                    className={`p-3.5 mb-6 text-xs font-medium rounded-lg text-center ${message.type === 'success'
+                        ? 'bg-emerald-50 text-emerald-700'
+                        : 'bg-rose-50 text-rose-700'
+                        }`}
                 >
                     {message.text}
                 </div>
